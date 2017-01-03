@@ -129,16 +129,8 @@ Async.defaultProps = {
 };
 
 function mapStateToProps(state) {
-    const { selectedReddit, postsByReddit } = state
-    console.log(postsByReddit, 822366);
-    const {isFetching, lastUpdated, items: posts} = postsByReddit[selectedReddit] || { isFetching: true, items: []}
-    console.log(1111,{
-        selectedReddit,
-        posts,
-        isFetching,
-        lastUpdated
-    }, 99999, postsByReddit[selectedReddit], 
-    333333);
+    const { selectedReddit, postsByReddit } = state;
+    const {isFetching, lastUpdated, items: posts} = postsByReddit[selectedReddit] || { isFetching: true, items: []};
     return {
         selectedReddit,
         posts,
