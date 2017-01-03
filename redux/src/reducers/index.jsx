@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import undoable, {includeAction} from 'redux-undo';
 import counter from './counter';
 import undo from './undo';
+import {postsByReddit, selectedReddit} from './async';
 import {INCREMENT_TYPE, DECREMENT_TYPE, UNDO_TYPE, REDO_TYPE } from '../constants/actionTypes';
 //使用redux的combineReducers方法将所有reducer打包起来
 
@@ -13,7 +14,9 @@ const rootReducer = combineReducers({
         debug: true,
         undoType: UNDO_TYPE,
         redoType: REDO_TYPE
-    })
+    }),
+    postsByReddit : postsByReddit,
+    selectedReddit : selectedReddit
 });
 
 
