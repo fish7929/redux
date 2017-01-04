@@ -20,6 +20,7 @@ if(argv.env === 'develop'){
 }else if(argv.env === 'release'){
 	env = 'production';
 }
+console.log(argv.historyApiFallback, 52222);
 //以下为通用配置，在开发和发布环境通用
 var common = {
     entry: [
@@ -57,6 +58,11 @@ var common = {
 };
 
 //开发模式下
+/**
+ *devServer: {
+ *  historyApiFallback: true   配置路由browserHistory
+ * }
+ */
 var dev = {
     devtool: 'inline-source-map',
     module: {
@@ -68,13 +74,16 @@ var dev = {
         ]
     },
     entry: [
-        'webpack-dev-server/client?http://localhost:'+port,
+        'webpack-dev-server/client?http://localhost:'+port+'/',
         'webpack/hot/only-dev-server'
     ],
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({ url: 'http://localhost:'+port})
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true
+    }
 };
 
 //发布模式下
